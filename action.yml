@@ -1,0 +1,88 @@
+---
+name: 'wpscan'
+author: 'mcarrowsmithpackages'
+description: 'WPScan a WordPress site with optional Slack Webhook'
+branding:
+    color: red
+    icon: target
+inputs:
+    url:
+        description: 'Target WordPress URL to scan'
+        required: true
+    token:
+        description: 'API token for wpscan.com'
+        required: false
+    options:
+        description: 'WPScan options'
+        required: false
+        default: '--no-banner --disable-tls-checks --random-user-agent'
+    webhook:
+        description: 'Slack webhook URL'
+        required: false
+outputs:
+    output:
+        description: "WPScan JSON output"
+        value: ${{ steps.wpscan-run.outputs.output }}
+runs:
+    using: "composite"
+    steps:
+        -
+            name: Setup jq
+            uses: dcarbone/install-jq-action@v2.1.0
+            with:
+                version: '1.7'
+                force: false
+
+        -
+            name: Setup Node
+            uses: actions/setup-node@v3
+            with:
+                node-version: 20
+
+        -
+            name: Setup Ruby
+            uses: ruby/setup-ruby@v1
+            with:
+                ruby-version: 3.1
+                bundler: 'latest'
+
+        -
+            name: Setup WPScan
+            shell: bash
+            run: gem install wpscan
+
+        -
+            name: Run WPScan
+            id: wpscan-run
+            shell: bash
+            run: |
+                ARGS=""
+
+                [ -n "${{ inputs.token }}" ] && ARGS="--api-token ${{ inputs.token }}"
+
+                RESULT=$(wpscan $ARGS --output output.json --format json --url ${{ inputs.url }} ${{ inputs.options }}; cat output.json)
+
+                #RESULT=$(cat ${{ github.action_path }}/assets/wpscan-output.json.example)
+                #RESULT=$(cat ${{ github.action_path }}/assets/wpscan-output-failed.json.example)
+
+                {
+                    echo 'OUTPUT<<EOF'
+                    echo $RESULT
+                    echo EOF
+                } >> "$GITHUB_OUTPUT"
+
+                echo "# WPScan - ${{ inputs.url }}" >> $GITHUB_STEP_SUMMARY
+                echo "" >> $GITHUB_STEP_SUMMARY
+                echo "## JSON" >> $GITHUB_STEP_SUMMARY
+                echo "" >> $GITHUB_STEP_SUMMARY
+                echo '```json' >> $GITHUB_STEP_SUMMARY
+                echo $RESULT | jq >> $GITHUB_STEP_SUMMARY
+                echo '```' >> $GITHUB_STEP_SUMMARY
+                echo "" >> $GITHUB_STEP_SUMMARY
+
+        -   name: Parse Vulnerabilities
+            id: js-run
+            shell: bash
+            run: node ${{ github.action_path }}/dist/index.js
+            env:
+                INPUT_JSON: ${{ steps.wpscan-run.outputs.output }}

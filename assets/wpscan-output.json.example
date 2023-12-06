@@ -1,0 +1,1494 @@
+{
+  "banner": {
+    "description": "WordPress Security Scanner by the WPScan Team",
+    "version": "3.8.22",
+    "authors": [
+      "@_WPScan_",
+      "@ethicalhack3r",
+      "@erwan_lr",
+      "@firefart"
+    ],
+    "sponsor": "Sponsored by Automattic - https://automattic.com/"
+  },
+  "start_time": 1701261683,
+  "start_memory": 45477888,
+  "target_url": "https://example.com/",
+  "target_ip": "143.198.243.63",
+  "effective_url": "https://example.com/",
+  "interesting_findings": [
+    {
+      "url": "https://example.com/",
+      "to_s": "Headers",
+      "type": "headers",
+      "found_by": "Headers (Passive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+
+      },
+      "interesting_entries": [
+        "server: nginx"
+      ]
+    },
+    {
+      "url": "https://example.com/wp-content/mu-plugins/",
+      "to_s": "This site has 'Must Use Plugins': https://example.com/wp-content/mu-plugins/",
+      "type": "mu_plugins",
+      "found_by": "Direct Access (Aggressive Detection)",
+      "confidence": 80,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "http://codex.wordpress.org/Must_Use_Plugins"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    },
+    {
+      "url": "https://example.com/wp-login.php?action=register",
+      "to_s": "Registration is enabled: https://example.com/wp-login.php?action=register",
+      "type": "registration",
+      "found_by": "Direct Access (Aggressive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+
+      },
+      "interesting_entries": [
+
+      ]
+    },
+    {
+      "url": "https://example.com/wp-cron.php",
+      "to_s": "The external WP-Cron seems to be enabled: https://example.com/wp-cron.php",
+      "type": "wp_cron",
+      "found_by": "Direct Access (Aggressive Detection)",
+      "confidence": 60,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "https://www.iplocation.net/defend-wordpress-from-ddos",
+          "https://github.com/wpscanteam/wpscan/issues/1299"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    }
+  ],
+  "version": {
+    "number": "6.2",
+    "release_date": "2023-03-29",
+    "status": "insecure",
+    "found_by": "Rss Generator (Passive Detection)",
+    "confidence": 100,
+    "interesting_entries": [
+      "https://example.com/feed/, <generator>https://wordpress.org/?v=6.2</generator>",
+      "https://example.com/comments/feed/, <generator>https://wordpress.org/?v=6.2</generator>"
+    ],
+    "confirmed_by": {
+
+    },
+    "vulnerabilities": [
+      {
+        "title": "WP <= 6.2 - Unauthenticated Blind SSRF via DNS Rebinding",
+        "fixed_in": null,
+        "references": {
+          "cve": [
+            "2022-3590"
+          ],
+          "url": [
+            "https://blog.sonarsource.com/wordpress-core-unauthenticated-blind-ssrf/"
+          ],
+          "wpvulndb": [
+            "c8814e6e-78b3-4f63-a1d3-6906a84c1f11"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.2.1 - Directory Traversal via Translation Files",
+        "fixed_in": "6.2.1",
+        "references": {
+          "cve": [
+            "2023-2745"
+          ],
+          "url": [
+            "https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/"
+          ],
+          "wpvulndb": [
+            "2999613a-b8c8-4ec0-9164-5dfe63adf6e6"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.2.1 - Thumbnail Image Update via CSRF",
+        "fixed_in": "6.2.1",
+        "references": {
+          "url": [
+            "https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/"
+          ],
+          "wpvulndb": [
+            "a03d744a-9839-4167-a356-3e7da0f1d532"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.2.1 - Contributor+ Stored XSS via Open Embed Auto Discovery",
+        "fixed_in": "6.2.1",
+        "references": {
+          "url": [
+            "https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/"
+          ],
+          "wpvulndb": [
+            "3b574451-2852-4789-bc19-d5cc39948db5"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.2.2 - Shortcode Execution in User Generated Data",
+        "fixed_in": "6.2.2",
+        "references": {
+          "url": [
+            "https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/",
+            "https://wordpress.org/news/2023/05/wordpress-6-2-2-security-release/"
+          ],
+          "wpvulndb": [
+            "ef289d46-ea83-4fa5-b003-0352c690fd89"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.2.1 - Contributor+ Content Injection",
+        "fixed_in": "6.2.1",
+        "references": {
+          "url": [
+            "https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/"
+          ],
+          "wpvulndb": [
+            "1527ebdb-18bc-4f9d-9c20-8d729a628670"
+          ]
+        }
+      },
+      {
+        "title": "WP 5.6-6.3.1 - Contributor+ Stored XSS via Navigation Block",
+        "fixed_in": "6.2.3",
+        "references": {
+          "cve": [
+            "2023-38000"
+          ],
+          "url": [
+            "https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"
+          ],
+          "wpvulndb": [
+            "cd130bb3-8d04-4375-a89a-883af131ed3a"
+          ]
+        }
+      },
+      {
+        "title": "WP 5.6-6.3.1 - Reflected XSS via Application Password Requests",
+        "fixed_in": "6.2.3",
+        "references": {
+          "url": [
+            "https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"
+          ],
+          "wpvulndb": [
+            "da1419cc-d821-42d6-b648-bdb3c70d91f2"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.3.2 - Denial of Service via Cache Poisoning",
+        "fixed_in": "6.2.3",
+        "references": {
+          "url": [
+            "https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"
+          ],
+          "wpvulndb": [
+            "6d80e09d-34d5-4fda-81cb-e703d0e56e4f"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.3.2 - Subscriber+ Arbitrary Shortcode Execution",
+        "fixed_in": "6.2.3",
+        "references": {
+          "url": [
+            "https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"
+          ],
+          "wpvulndb": [
+            "3615aea0-90aa-4f9a-9792-078a90af7f59"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.3.2 - Contributor+ Comment Disclosure",
+        "fixed_in": "6.2.3",
+        "references": {
+          "cve": [
+            "2023-39999"
+          ],
+          "url": [
+            "https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"
+          ],
+          "wpvulndb": [
+            "d35b2a3d-9b41-4b4f-8e87-1b8ccb370b9f"
+          ]
+        }
+      },
+      {
+        "title": "WP < 6.3.2 - Unauthenticated Post Author Email Disclosure",
+        "fixed_in": "6.2.3",
+        "references": {
+          "cve": [
+            "2023-5561"
+          ],
+          "url": [
+            "https://wpscan.com/blog/email-leak-oracle-vulnerability-addressed-in-wordpress-6-3-2/",
+            "https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"
+          ],
+          "wpvulndb": [
+            "19380917-4c27-4095-abf1-eba6f913b441"
+          ]
+        }
+      }
+    ]
+  },
+  "main_theme": {
+    "slug": "hello-theme-child-master",
+    "location": "https://example.com/wp-content/themes/hello-theme-child-master/",
+    "latest_version": null,
+    "last_updated": null,
+    "outdated": false,
+    "readme_url": false,
+    "directory_listing": false,
+    "error_log_url": null,
+    "style_url": "https://example.com/wp-content/themes/hello-theme-child-master/style.css?ver=1.0.0",
+    "style_name": "Customer Theme (Child)",
+    "style_uri": "https://github.com/elementor/hello-theme/",
+    "description": "Example is a child of Example, creatd by Elementor team and remastered by Example Ltd.",
+    "author": "Example Org",
+    "author_uri": "https://example.com/",
+    "template": "hello-elementor",
+    "license": "GNU General Public License v3 or later.",
+    "license_uri": "https://www.gnu.org/licenses/gpl-3.0.html",
+    "tags": "flexible-header, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, threaded-comments, translation-ready",
+    "text_domain": "hello-elementor-child",
+    "found_by": "Css Style In Homepage (Passive Detection)",
+    "confidence": 100,
+    "interesting_entries": [
+
+    ],
+    "confirmed_by": {
+      "Css Style In 404 Page (Passive Detection)": {
+        "confidence": 70,
+        "interesting_entries": [
+
+        ]
+      }
+    },
+    "vulnerabilities": [
+
+    ],
+    "version": {
+      "number": "1.0.1",
+      "confidence": 80,
+      "found_by": "Style (Passive Detection)",
+      "interesting_entries": [
+        "https://example.com/wp-content/themes/hello-theme-child-master/style.css?ver=1.0.0, Match: 'Version: 1.0.1'"
+      ],
+      "confirmed_by": {
+
+      }
+    },
+    "parents": [
+
+    ]
+  },
+  "plugins": {
+    "advanced-coupons-for-woocommerce-free": {
+      "slug": "advanced-coupons-for-woocommerce-free",
+      "location": "https://example.com/wp-content/plugins/advanced-coupons-for-woocommerce-free/",
+      "latest_version": "4.5.8.3",
+      "last_updated": "2023-11-28T02:08:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Advanced Coupons for WooCommerce Coupons < 4.5.0.1 - Notice Dismiss via CSRF",
+          "fixed_in": "4.5.0.1",
+          "references": {
+            "cve": [
+              "2022-43481"
+            ],
+            "wpvulndb": [
+              "0a6dadd1-13c9-42da-9e59-127f60d2c1ba"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "age-gate": {
+      "slug": "age-gate",
+      "location": "https://example.com/wp-content/plugins/age-gate/",
+      "latest_version": "3.3.1",
+      "last_updated": "2023-11-20T20:27:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Age Gate < 2.13.5 - Unauthenticated Open Redirect",
+          "fixed_in": "2.13.5",
+          "references": {
+            "url": [
+              "https://packetstormsecurity.com/files/160236/"
+            ],
+            "wpvulndb": [
+              "f045d42d-3053-404c-9d79-cab9aadc9402"
+            ]
+          }
+        },
+        {
+          "title": "Age Gate < 2.16.4 - Authenticated Stored Cross-Site Scripting",
+          "fixed_in": "2.16.4",
+          "references": {
+            "url": [
+              "https://www.trustwave.com/en-us/resources/security-resources/security-advisories/?fid=29378"
+            ],
+            "wpvulndb": [
+              "868c86ef-a228-4ad9-95e6-3a3190bbc124"
+            ]
+          }
+        },
+        {
+          "title": "Age Gate < 2.17.1 - Unauthenticated Import Settings",
+          "fixed_in": "2.17.1",
+          "references": {
+            "url": [
+              "https://wordpress.org/support/topic/age-gate-hacked-on-multiple-sites-multiple-servers/",
+              "https://plugins.trac.wordpress.org/changeset/2618003/age-gate"
+            ],
+            "wpvulndb": [
+              "1795452a-171b-4624-b0eb-083b26a0bebb"
+            ]
+          }
+        },
+        {
+          "title": "Age Gate < 2.20.4 - Reflected Cross-Site Scripting",
+          "fixed_in": "2.20.4",
+          "references": {
+            "wpvulndb": [
+              "a13148fe-ffc9-4003-a44d-652624ba5535"
+            ]
+          }
+        },
+        {
+          "title": "Age Gate < 2.17.1 - Unauthenticated Stored Cross-Site Scripting",
+          "fixed_in": "2.17.1",
+          "references": {
+            "cve": [
+              "2021-36901"
+            ],
+            "wpvulndb": [
+              "e10767b7-018c-4532-8be6-09834055844c"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "ajax-search-for-woocommerce": {
+      "slug": "ajax-search-for-woocommerce",
+      "location": "https://example.com/wp-content/plugins/ajax-search-for-woocommerce/",
+      "latest_version": "1.25.0",
+      "last_updated": "2023-07-05T12:13:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Unauthorised AJAX Calls via Freemius",
+          "fixed_in": "1.17.0",
+          "references": {
+            "wpvulndb": [
+              "6dae6dca-7474-4008-9fe5-4c62b9f12d0a"
+            ]
+          }
+        },
+        {
+          "title": "FiboSearch < 1.18.0 - Admin+ Stored Cross-Site Scripting",
+          "fixed_in": "1.18.0",
+          "references": {
+            "cve": [
+              "2022-1469"
+            ],
+            "wpvulndb": [
+              "88869380-173d-4d4f-81d8-3c20add5f98d"
+            ]
+          }
+        },
+        {
+          "title": "FiboSearch - AJAX Search for WooCommerce < 1.24.0 - Admin+ Stored Cross-Site Scripting",
+          "fixed_in": "1.24.0",
+          "references": {
+            "cve": [
+              "2023-2450"
+            ],
+            "url": [
+              "https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/ajax-search-for-woocommerce/fibosearch-ajax-search-for-woocommerce-1230-authenticated-admin-stored-cross-site-scripting"
+            ],
+            "wpvulndb": [
+              "5911a466-ce38-4f0d-8fe2-f3f20b0a9584"
+            ]
+          }
+        },
+        {
+          "title": "Freemius SDK < 2.5.10 - Reflected Cross-Site Scripting",
+          "fixed_in": "1.25.0b3",
+          "references": {
+            "cve": [
+              "2023-33999"
+            ],
+            "wpvulndb": [
+              "35d2f1e7-a4f8-49fd-a8dd-bb2c26710f93"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "back-in-stock-notifier-for-woocommerce": {
+      "slug": "back-in-stock-notifier-for-woocommerce",
+      "location": "https://example.com/wp-content/plugins/back-in-stock-notifier-for-woocommerce/",
+      "latest_version": "5.0.1",
+      "last_updated": "2023-10-29T12:58:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    },
+    "conditional-shipping-for-woocommerce": {
+      "slug": "conditional-shipping-for-woocommerce",
+      "location": "https://example.com/wp-content/plugins/conditional-shipping-for-woocommerce/",
+      "latest_version": "3.1.2",
+      "last_updated": "2023-10-09T13:58:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Conditional Shipping for WooCommerce < 2.3.2 - Ruleset Toggle via CSRF",
+          "fixed_in": "2.3.2",
+          "references": {
+            "cve": [
+              "2022-46815"
+            ],
+            "wpvulndb": [
+              "c373b43c-8746-4620-b908-2320e059ddaf"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "customer-reviews-woocommerce": {
+      "slug": "customer-reviews-woocommerce",
+      "location": "https://example.com/wp-content/plugins/customer-reviews-woocommerce/",
+      "latest_version": "5.38.3",
+      "last_updated": "2023-11-24T18:25:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Customer Reviews for WooCommerce < 5.3.6 - Unauthenticated Sensitive Information Disclosure",
+          "fixed_in": "5.3.6",
+          "references": {
+            "cve": [
+              "2022-40194"
+            ],
+            "wpvulndb": [
+              "71d6548f-b740-4162-b08b-bb89773398bb"
+            ]
+          }
+        },
+        {
+          "title": "Customer Reviews for WooCommerce < 5.3.6 - Cross-Site Request Forgery",
+          "fixed_in": "5.3.6",
+          "references": {
+            "cve": [
+              "2022-38470"
+            ],
+            "wpvulndb": [
+              "873ca823-186c-497a-b442-317656402975"
+            ]
+          }
+        },
+        {
+          "title": "Customer Reviews for WooCommerce < 5.3.6 - Broken Access Control",
+          "fixed_in": "5.3.6",
+          "references": {
+            "cve": [
+              "2022-38134"
+            ],
+            "wpvulndb": [
+              "2fa2c1fe-0a92-48a5-b79f-2460526471a4"
+            ]
+          }
+        },
+        {
+          "title": "Customer Reviews for WooCommerce < 5.16.0 - Contributor+ LFI",
+          "fixed_in": "5.16.0",
+          "references": {
+            "cve": [
+              "2023-0080"
+            ],
+            "wpvulndb": [
+              "6b0d63ed-e244-4f20-8f10-a6e0c7ccadd4"
+            ]
+          }
+        },
+        {
+          "title": "Customer Reviews for WooCommerce < 5.17.0 - Contributor+ Stored XSS",
+          "fixed_in": "5.17.0",
+          "references": {
+            "cve": [
+              "2023-0079"
+            ],
+            "wpvulndb": [
+              "fdaba4d1-950d-4512-95de-cd43fe9e73e5"
+            ]
+          }
+        },
+        {
+          "title": "Customer Reviews for WooCommerce < 5.36.1 - Missing Authorization in Reviews Exporter",
+          "fixed_in": "5.36.1",
+          "references": {
+            "cve": [
+              "2023-45101"
+            ],
+            "url": [
+              "https://www.wordfence.com/threat-intel/vulnerabilities/id/d60f3da1-1184-4629-880c-ce3893fb55a5"
+            ],
+            "wpvulndb": [
+              "8998ad71-c87c-4f44-a881-550f5c468dfd"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "duracelltomi-google-tag-manager": {
+      "slug": "duracelltomi-google-tag-manager",
+      "location": "https://example.com/wp-content/plugins/duracelltomi-google-tag-manager/",
+      "latest_version": "1.18.1",
+      "last_updated": "2023-08-23T08:40:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Google Tag Manager for WordPress < 1.15.1 - Reflected Cross-Site Scripting",
+          "fixed_in": "1.15.1",
+          "references": {
+            "cve": [
+              "2022-1707"
+            ],
+            "wpvulndb": [
+              "b5384be3-91c0-45e8-ae03-0188be12bc09"
+            ]
+          }
+        },
+        {
+          "title": "GTM4WP < 1.15.2 - Admin+ Stored Cross-Site Scripting",
+          "fixed_in": "1.15.2",
+          "references": {
+            "cve": [
+              "2022-1961"
+            ],
+            "wpvulndb": [
+              "78f097ff-ac14-4d30-a80f-29709f7d1f69"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "elementor": {
+      "slug": "elementor",
+      "location": "https://example.com/wp-content/plugins/elementor/",
+      "latest_version": "3.17.3",
+      "last_updated": "2023-11-08T13:48:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Elementor Website Builder < 3.16.5 - Authenticated (Contributor+) Stored Cross-Site Scripting via get_inline_svg()",
+          "fixed_in": "3.16.5",
+          "references": {
+            "cve": [
+              "2023-47505"
+            ],
+            "url": [
+              "https://www.wordfence.com/threat-intel/vulnerabilities/id/b44ef21f-464e-487a-ba5a-fe889e4c488c"
+            ],
+            "wpvulndb": [
+              "62b53acf-6551-4ea7-8727-039a3c9ba7ce"
+            ]
+          }
+        },
+        {
+          "title": "Elementor Website Builder < 3.16.5 - Missing Authorization to Arbitrary Attachment Read",
+          "fixed_in": "3.16.5",
+          "references": {
+            "cve": [
+              "2023-47504"
+            ],
+            "url": [
+              "https://www.wordfence.com/threat-intel/vulnerabilities/id/c873c76a-144e-4945-8fa2-c9ffe0e3c061"
+            ],
+            "wpvulndb": [
+              "e60f0f7e-4c3b-4107-803a-8e03526859ed"
+            ]
+          }
+        }
+      ],
+      "version": {
+        "number": "3.14.0",
+        "confidence": 100,
+        "found_by": "Javascript Comment (Aggressive Detection)",
+        "interesting_entries": [
+          "https://example.com/wp-content/plugins/elementor/assets/js/admin-feedback.js, Match: 'elementor - v3.14.0'"
+        ],
+        "confirmed_by": {
+          "Style Comment (Aggressive Detection)": {
+            "confidence": 60,
+            "interesting_entries": [
+              "https://example.com/wp-content/plugins/elementor/assets/css/admin.min.css, Match: 'elementor - v3.14.0'"
+            ]
+          }
+        }
+      }
+    },
+    "elementor-pro": {
+      "slug": "elementor-pro",
+      "location": "https://example.com/wp-content/plugins/elementor-pro/",
+      "latest_version": null,
+      "last_updated": null,
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "3.14.1",
+        "confidence": 10,
+        "found_by": "Query Parameter (Passive Detection)",
+        "interesting_entries": [
+          "https://example.com/wp-content/plugins/elementor-pro/assets/css/frontend.min.css?ver=3.14.1"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "elementskit": {
+      "slug": "elementskit",
+      "location": "https://example.com/wp-content/plugins/elementskit/",
+      "latest_version": null,
+      "last_updated": null,
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "ElementsKit and ElementsKit Pro < 2.2.0 - Contributor+ Stored XSS",
+          "fixed_in": "2.2.0",
+          "references": {
+            "cve": [
+              "2021-24258"
+            ],
+            "url": [
+              "https://www.wordfence.com/blog/2021/04/recent-patches-rock-the-elementor-ecosystem/"
+            ],
+            "wpvulndb": [
+              "47b47b86-899b-4de3-8a3c-2d5d1774298f"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "elementskit-lite": {
+      "slug": "elementskit-lite",
+      "location": "https://example.com/wp-content/plugins/elementskit-lite/",
+      "latest_version": "3.0.3",
+      "last_updated": "2023-11-28T12:47:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "ElementsKit and ElementsKit Pro < 2.2.0 - Contributor+ Stored XSS",
+          "fixed_in": "2.2.0",
+          "references": {
+            "cve": [
+              "2021-24258"
+            ],
+            "url": [
+              "https://www.wordfence.com/blog/2021/04/recent-patches-rock-the-elementor-ecosystem/"
+            ],
+            "wpvulndb": [
+              "47b47b86-899b-4de3-8a3c-2d5d1774298f"
+            ]
+          }
+        },
+        {
+          "title": "Elements kit Elementor addons < 2.9.2 - Missing Authorization",
+          "fixed_in": "2.9.2",
+          "references": {
+            "cve": [
+              "2023-39993"
+            ],
+            "url": [
+              "https://www.wordfence.com/threat-intel/vulnerabilities/id/5ff589ec-756d-4183-8bb8-61dae9be7c5d"
+            ],
+            "wpvulndb": [
+              "e9dda50c-b2f6-4fbe-8e40-5aff175b8916"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "google-site-kit": {
+      "slug": "google-site-kit",
+      "location": "https://example.com/wp-content/plugins/google-site-kit/",
+      "latest_version": "1.114.0",
+      "last_updated": "2023-11-21T19:43:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Meta Tag (Passive Detection)",
+      "confidence": 40,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "1.106.0",
+        "confidence": 60,
+        "found_by": "Meta Tag (Passive Detection)",
+        "interesting_entries": [
+          "https://example.com/, Match: 'Site Kit by Google 1.106.0'"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "happy-elementor-addons": {
+      "slug": "happy-elementor-addons",
+      "location": "https://example.com/wp-content/plugins/happy-elementor-addons/",
+      "latest_version": "3.9.1.1",
+      "last_updated": "2023-11-02T09:38:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Happy Addons for Elementor Free < 2.24.0 and Pro < 1.17.0 - Contributor+ Stored XSS",
+          "fixed_in": "2.24.0",
+          "references": {
+            "cve": [
+              "2021-24292"
+            ],
+            "url": [
+              "https://www.wordfence.com/blog/2021/04/recent-patches-rock-the-elementor-ecosystem/"
+            ],
+            "wpvulndb": [
+              "0f20e098-8106-451f-9448-d35a79f03077"
+            ]
+          }
+        },
+        {
+          "title": "Happy Addons for Elementor < 3.8.3 - Cross-Site Request Forgery",
+          "fixed_in": "3.8.3",
+          "references": {
+            "cve": [
+              "2023-28989"
+            ],
+            "url": [
+              "https://patchstack.com/database/vulnerability/happy-elementor-addons/wordpress-happy-addons-for-elementor-plugin-3-8-2-cross-site-request-forgery-csrf-on-collect-data-popup"
+            ],
+            "wpvulndb": [
+              "fe292389-0b47-4fdf-9d58-1131ea17800a"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "jet-woo-builder": {
+      "slug": "jet-woo-builder",
+      "location": "https://example.com/wp-content/plugins/jet-woo-builder/",
+      "latest_version": "2.1.8",
+      "last_updated": null,
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    },
+    "metronet-profile-picture": {
+      "slug": "metronet-profile-picture",
+      "location": "https://example.com/wp-content/plugins/metronet-profile-picture/",
+      "latest_version": "2.6.1",
+      "last_updated": "2023-09-28T14:36:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "User Profile Picture < 2.5.0 - Sensitive Information Disclosure",
+          "fixed_in": "2.5.0",
+          "references": {
+            "cve": [
+              "2021-24170"
+            ],
+            "url": [
+              "https://www.wordfence.com/blog/2021/03/medium-severity-vulnerability-patched-in-user-profile-picture-plugin/"
+            ],
+            "wpvulndb": [
+              "29fc5b0e-0a5f-4484-a1e6-a0a1206726cc"
+            ]
+          }
+        },
+        {
+          "title": "User Profile Picture < 2.6.0 - Arbitrary User Picture Change/Deletion via IDOR",
+          "fixed_in": "2.6.0",
+          "references": {
+            "cve": [
+              "2021-24473"
+            ],
+            "wpvulndb": [
+              "79982ea9-4733-4b1e-a43e-17629c1136de"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "reviewx": {
+      "slug": "reviewx",
+      "location": "https://example.com/wp-content/plugins/reviewx/",
+      "latest_version": "1.6.22",
+      "last_updated": "2023-09-11T16:06:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "ReviewX < 1.2.9 - Unauthorised AJAX call via CSRF",
+          "fixed_in": "1.2.9",
+          "references": {
+            "url": [
+              "https://plugins.trac.wordpress.org/changeset/2503077/"
+            ],
+            "wpvulndb": [
+              "381a8abd-6a1c-4b56-8e97-d79a553138fe"
+            ]
+          }
+        },
+        {
+          "title": "ReviewX < 1.6.4 - Subscriber+ SQLi",
+          "fixed_in": "1.6.4",
+          "references": {
+            "cve": [
+              "2023-26325"
+            ],
+            "wpvulndb": [
+              "bb5cc190-6291-4af3-978b-0ade2ea68d77"
+            ]
+          }
+        },
+        {
+          "title": "ReviewX < 1.6.14 - Subscriber+ Privilege Escalation",
+          "fixed_in": "1.6.14",
+          "references": {
+            "cve": [
+              "2023-2833"
+            ],
+            "url": [
+              "https://www.wordfence.com/blog/2023/05/wpdeveloper-addresses-privilege-escalation-vulnerability-in-reviewx-wordpress-plugin/"
+            ],
+            "wpvulndb": [
+              "1f62bc00-1315-4eda-8517-3e3ad7e1c5e1"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "reviewx-pro": {
+      "slug": "reviewx-pro",
+      "location": "https://example.com/wp-content/plugins/reviewx-pro/",
+      "latest_version": null,
+      "last_updated": null,
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    },
+    "woo-discount-rules": {
+      "slug": "woo-discount-rules",
+      "location": "https://example.com/wp-content/plugins/woo-discount-rules/",
+      "latest_version": "2.6.2",
+      "last_updated": "2023-11-14T08:20:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Discount Rules for WooCommerce < 2.1.0 - Multiple Vulnerabilities",
+          "fixed_in": "2.1.0",
+          "references": {
+            "url": [
+              "https://www.webarxsecurity.com/multiple-vulnerabilities-in-discount-rules-for-woocommerce-plugin/"
+            ],
+            "wpvulndb": [
+              "f9048083-69aa-46d4-823d-1c9a1221513e"
+            ]
+          }
+        },
+        {
+          "title": "Discount Rules for WooCommerce < 2.2.1 - Multiple Authorization Bypass",
+          "fixed_in": "2.2.1",
+          "references": {
+            "url": [
+              "https://www.wordfence.com/blog/2020/09/high-severity-vulnerabilities-patched-in-discount-rules-for-woocommerce/",
+              "https://www.webarxsecurity.com/multiple-vulnerabilities-in-discount-rules-for-woocommerce-plugin/"
+            ],
+            "wpvulndb": [
+              "50625e77-3560-4156-8b4a-e43fc0d0c89c"
+            ]
+          }
+        },
+        {
+          "title": "Woo Discount Rules < 2.4.2 - Reflected Cross-Site Scripting",
+          "fixed_in": "2.4.2",
+          "references": {
+            "cve": [
+              "2022-2090"
+            ],
+            "wpvulndb": [
+              "0201f365-7acb-4640-bd3f-7119432f4917"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "woo-discount-rules-pro": {
+      "slug": "woo-discount-rules-pro",
+      "location": "https://example.com/wp-content/plugins/woo-discount-rules-pro/",
+      "latest_version": null,
+      "last_updated": null,
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    },
+    "woocommerce": {
+      "slug": "woocommerce",
+      "location": "https://example.com/wp-content/plugins/woocommerce/",
+      "latest_version": "8.3.0",
+      "last_updated": "2023-11-16T18:39:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        },
+        "Meta Generator (Passive Detection)": {
+          "confidence": 40,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "WooCommerce < 7.9 - Unauthenticated Sensitive Information Disclosure",
+          "fixed_in": "7.9",
+          "references": {
+            "url": [
+              "https://hackerone.com/reports/2057736"
+            ],
+            "wpvulndb": [
+              "d1cec296-b5df-4cea-8c0d-d03a975cb6af"
+            ]
+          }
+        },
+        {
+          "title": "WooCommerce < 8.1.1 - Shop Manager+ User Metadata Disclosure",
+          "fixed_in": "8.1.1",
+          "references": {
+            "url": [
+              "https://hackerone.com/reports/1702658",
+              "https://developer.woocommerce.com/2023/09/16/woocommerce-vulnerability-reintroduced-from-7-0-1/"
+            ],
+            "wpvulndb": [
+              "bb9f355a-be33-41b1-af36-0a30c24bec8c"
+            ]
+          }
+        },
+        {
+          "title": "WooCommerce < 7.9.0 - Sensitive Information Exposure",
+          "fixed_in": "7.9.0",
+          "references": {
+            "url": [
+              "https://www.wordfence.com/threat-intel/vulnerabilities/id/7b2d1879-c337-41c9-9f47-f9c2fe8e5928"
+            ],
+            "wpvulndb": [
+              "9c9498b0-d42e-4ce0-b299-ba5d08058a75"
+            ]
+          }
+        },
+        {
+          "title": "WooCommerce <= 8.1.1 & WooCommerce Blocks <= 11.1.1 - Authenticated (Contributor+) Stored Cross-Site Scripting via Featured Image alt Attribute",
+          "fixed_in": "8.2.0",
+          "references": {
+            "cve": [
+              "2023-47777"
+            ],
+            "url": [
+              "https://www.wordfence.com/threat-intel/vulnerabilities/id/525dec5b-b457-483c-ab2d-09dd320edcaa"
+            ],
+            "wpvulndb": [
+              "b8e9b8cf-8d13-4fd8-8e1e-ee35a01baf05"
+            ]
+          }
+        }
+      ],
+      "version": {
+        "number": "7.6.1",
+        "confidence": 100,
+        "found_by": "Query Parameter (Passive Detection)",
+        "interesting_entries": [
+          "https://example.com/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=7.6.1",
+          "https://example.com/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=7.6.1",
+          "https://example.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=7.6.1",
+          "https://example.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=7.6.1",
+          "https://example.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=7.6.1",
+          "https://example.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=7.6.1"
+        ],
+        "confirmed_by": {
+          "Meta Generator (Passive Detection)": {
+            "confidence": 60,
+            "interesting_entries": [
+              "https://example.com/, Match: 'WooCommerce 7.6.1'"
+            ]
+          }
+        }
+      }
+    },
+    "woocommerce-advanced-products-labels": {
+      "slug": "woocommerce-advanced-products-labels",
+      "location": "https://example.com/wp-content/plugins/woocommerce-advanced-products-labels/",
+      "latest_version": null,
+      "last_updated": null,
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    },
+    "wordpress-seo": {
+      "slug": "wordpress-seo",
+      "location": "https://example.com/wp-content/plugins/wordpress-seo/",
+      "latest_version": "21.6",
+      "last_updated": "2023-11-28T09:53:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Comment (Passive Detection)",
+      "confidence": 30,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "20.7",
+        "confidence": 60,
+        "found_by": "Comment (Passive Detection)",
+        "interesting_entries": [
+          "https://example.com/, Match: 'optimized with the Yoast SEO plugin v20.7 -'"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "yith-woocommerce-review-reminder-premium": {
+      "slug": "yith-woocommerce-review-reminder-premium",
+      "location": "https://example.com/wp-content/plugins/yith-woocommerce-review-reminder-premium/",
+      "latest_version": "1.36.0",
+      "last_updated": "2023-11-14T00:00:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    }
+  },
+  "config_backups": {
+
+  },
+  "vuln_api": {
+    "plan": "free",
+    "requests_done_during_scan": 25,
+    "requests_remaining": 0
+  },
+  "stop_time": 1701261748,
+  "elapsed": 65,
+  "requests_done": 279,
+  "cached_requests": 6,
+  "data_sent": 79082,
+  "data_sent_humanised": "77.229 KB",
+  "data_received": 1348096,
+  "data_received_humanised": "1.286 MB",
+  "used_memory": 353054720,
+  "used_memory_humanised": "336.699 MB"
+}
